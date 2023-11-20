@@ -1,9 +1,9 @@
-import { mongoose } from "../index";
+const mongoose = require("mongoose");
 
 const userSchema = mongoose.Schema({
   name: {
     type: String,
-    maxlength: 50,
+    max: 50,
   },
   email: {
     type: String,
@@ -12,7 +12,11 @@ const userSchema = mongoose.Schema({
   },
   password: {
     type: String,
-    maxlength: 50,
+    max: 50,
+  },
+  lastname: {
+    type: String,
+    max: 50,
   },
   role: {
     type: Number,
@@ -29,4 +33,4 @@ const userSchema = mongoose.Schema({
 
 const User = mongoose.model("User", userSchema);
 
-module.exports = {User};
+module.exports = { User };
