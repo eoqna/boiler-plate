@@ -3,7 +3,7 @@ const app = express();
 const port = 5000;
 const bodyParser = require("body-parser");
 const { User } = require("./models/user");
-const url = "";
+const { MongoURI } = require("./config/key");
 
 // application/x-www-form/urlencoded
 app.use(bodyParser.urlencoded({extended: true}));
@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 const mongoose = require("mongoose");
-mongoose.connect(url, {
+mongoose.connect(MongoURI, {
   autoIndex: true,
   })
   .then(() => {
