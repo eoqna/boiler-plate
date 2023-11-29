@@ -80,7 +80,6 @@ userSchema.methods.generateToken = function(cb) {
 };
 
 userSchema.statics.findByToken = function(token, cb) {
-  console.log("여기");
   // jsonwebtoken을 이용해서 토큰 생성
   const user = this;
 
@@ -89,7 +88,7 @@ userSchema.statics.findByToken = function(token, cb) {
     // 유저 아이디를 이용해서 유저를 찾은 다음에
     // 클라이언트에서 가져온 token과 DB에 보관된 토큰이 일치하는지 확인
 
-    user.findOne({ "_id": decoded, "token": token })
+    user.findOne({ _id: decoded, token: token })
     .then((info, err) => {
       if( !info ) {
         return cb(err);
