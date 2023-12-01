@@ -48,11 +48,15 @@ const RegisterPage = () => {
   return (
     <div style={{ 
       display: "flex",
+      flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
       width: "100%",
       height: "100vh",
     }}>
+      <h2>
+        Signup
+      </h2>
       <form 
         style={{
           display: "flex",
@@ -60,33 +64,134 @@ const RegisterPage = () => {
         }}
         onSubmit={(e) => onSubmitHandler(e)}
       >
-        <label>Email</label>
-        <input 
-          type="email"
-          value={email}
-          autoFocus={true}
-          onChange={(e) => {onChangeEmailHandler(e)}}
-        />
-        <label>Name</label>
-        <input 
-          type="text"
-          value={name}
-          onChange={(e) => {onChangeNameHandler(e)}}
-        />
-        <label>Password</label>
-        <input 
-          type="password"
-          value={password}
-          onChange={(e) => {onChangePasswordHandler(e)}}
-        />
-        <label>Confirm Password</label>
-        <input 
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => {onChangeConfirmPasswordHandler(e)}}
-        />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: 30,
+          }}
+        >
+          <label
+            style={{ width: 100, textAlign: "right", marginRight: 10}}
+          >
+            <span style={{color: "red"}}>* </span>Email:
+          </label>
+          <input 
+            style={{
+              width: 250,
+              padding: "8px 12px",
+              border: "1px solid #bbb",
+              borderRadius: 5,
+              outline: "none",
+            }}
+            type="email"
+            placeholder="Enter your Email"
+            value={email}
+            autoFocus={true}
+            onChange={(e) => {onChangeEmailHandler(e)}}
+          />
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: 30,
+          }}
+        >
+          <label
+            style={{ width: 100, textAlign: "right", marginRight: 10}}
+          >
+            <span style={{color: "red"}}>* </span>Name:
+          </label>
+          <input 
+            style={{
+              width: 250,
+              padding: "8px 12px",
+              border: "1px solid #bbb",
+              borderRadius: 5,
+              outline: "none",
+            }}
+            type="text"
+            placeholder="Enter your Name"
+            value={name}
+            onChange={(e) => {onChangeNameHandler(e)}}
+          />
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: 30,
+          }}
+        >
+          <label
+            style={{ width: 100, textAlign: "right", marginRight: 10}}
+          >
+            <span style={{color: "red"}}>* </span>Password:
+          </label>
+          <input 
+            style={{
+              width: 250,
+              padding: "8px 12px",
+              border: "1px solid #bbb",
+              borderRadius: 5,
+              outline: "none",
+            }}
+            type="password"
+            placeholder="Enter your password"
+            value={password}
+            onChange={(e) => {onChangePasswordHandler(e)}}
+          />
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: 30,
+          }}
+        >
+          <label
+            style={{ width: 100, textAlign: "right", marginRight: 10}}
+          >
+            <span style={{color: "red"}}>* </span>Confirm:
+          </label>
+          <input 
+            style={{
+              width: 250,
+              padding: "8px 12px",
+              border: "1px solid #bbb",
+              borderRadius: 5,
+              outline: "none",
+            }}
+            type="password"
+            placeholder="Enter your confirmPassword"
+            value={confirmPassword}
+            onChange={(e) => {onChangeConfirmPasswordHandler(e)}}
+          />
+        </div>
         <br />
-        <button>Join</button>
+        <div
+          style={{
+            textAlign: "center",
+          }}
+        >
+          <button
+            style={{
+              height: 35,
+              width: 80,
+              background: "blue",
+              color: "#fff",
+              border: 0,
+              borderRadius: 5,
+            }}
+          >
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );

@@ -24,21 +24,19 @@ const LoginPage = () => {
       password,
     };
 
-    const result = dispatch(loginUser(body));
-
-    if( result ) {
-      console.log(result);
-    }
+    dispatch(loginUser(body));
   };
   
   return (
     <div style={{ 
       display: "flex",
+      flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
       width: "100%",
       height: "100vh",
     }}>
+      <h2>Login</h2>
       <form 
         style={{
           display: "flex",
@@ -46,21 +44,59 @@ const LoginPage = () => {
         }}
         onSubmit={(e) => onSubmitHandler(e)}
       >
-        <label>Email</label>
         <input 
+          style={{
+            width: 300,
+            padding: "8px 12px",
+            marginBottom: 30,
+            border: "1px solid #bbb",
+            borderRadius: 5,
+            outline: "none",
+          }}
           type="email"
           value={email}
           autoFocus={true}
           onChange={(e) => {onChangeEmailHandler(e)}}
         />
-        <label>Password</label>
         <input 
+          style={{
+            width: 300,
+            padding: "8px 12px",
+            marginBottom: 30,
+            border: "1px solid #bbb",
+            borderRadius: 5,
+            outline: "none",
+          }}
           type="password"
           value={password}
           onChange={(e) => {onChangePasswordHandler(e)}}
         />
         <br />
-        <button>Login</button>
+        <button
+          style={{
+            height: 30,
+            background: "blue",
+            color: "#fff",
+            border: 0,
+            borderRadius: 5,
+          }}
+        >
+          Log in
+        </button>
+        <p
+          style={{
+            fontSize: 14
+          }}
+        >
+          <span>Or</span>
+          <a 
+            href="/register"
+            style={{
+              color: "blue",
+              textDecoration: "none",
+            }}
+          > register new!</a>
+        </p>
       </form>
     </div>
   );

@@ -4,13 +4,30 @@ import axios from "axios";
 interface LoginState {
   email: string;
   password: string;
-  name?: string;
-}
+};
 
-const initialState: LoginState = {
+interface JoinState {
+  email: string;
+  password: string;
+  name: string;
+};
+
+export interface UserState {
+  _id: string;
+  email: string;
+  name: string;
+  isAdmin: boolean;
+  isAuth: boolean;
+  role: number;
+};
+
+const initialState: UserState = {
+  _id: "",
   email: "",
-  password: "",
   name: "",
+  isAdmin: false,
+  isAuth: false,
+  role: 0,
 };
 
 export const user_reducer = createSlice({
@@ -24,7 +41,7 @@ export const user_reducer = createSlice({
       })
       .then((res) => {
         if( res.data.loginSuccess ) {
-          window.location.replace("/");
+          window.location.href = "/";
         } else {
           alert("Failed to login");
         }
@@ -33,7 +50,7 @@ export const user_reducer = createSlice({
         console.error(err);
       });
     },
-    registerUser: (state, action: PayloadAction<LoginState>) => {
+    registerUser: (state, action: PayloadAction<JoinState>) => {
       axios.post("/api/api/users/register", {
         email: action.payload.email,
         password: action.payload.password,
@@ -41,7 +58,7 @@ export const user_reducer = createSlice({
       })
       .then((res) => {
         if( res.data.success ) {
-          window.location.replace("/login");
+          window.location.href = "/login";
         } else {
           alert("Failed to sign up");
         }
@@ -55,16 +72,10 @@ export const user_reducer = createSlice({
     .then((res) => {
       // 로그인 안된 상태
       if( !res.data.isAuth ) {
-        console.log("로그인 안된 상태");
-        window.location.replace("/login");
+        window.location.href = "/";
       } else {
-        // 로그인된 상태
-        console.log("로그인 된 상태");
-        if( !res.data.isAdmin ) {
-          window.location.replace("/");
-        } else {
-          window.location.replace("/");
-        }
+        state = res.data
+        return state;
       }
     })
     .catch((err) => {
